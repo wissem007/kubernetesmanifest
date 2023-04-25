@@ -13,7 +13,7 @@ node {
                         withCredentials([usernamePassword(credentialsId: 'jenkinstogithub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                         sh "git config user.email alouiwiss@gmail.com"
-                        sh "git config user.name user"
+                        sh "git config user.name wissem007"
                         //sh "git switch master"
                         sh "cat deployment.yaml"
                         sh "sed -i 's+wissem007/python.*+wissem007/python:${DOCKERTAG}+g' deployment.yaml"
