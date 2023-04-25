@@ -1,23 +1,13 @@
 node {
     def app
-   environment {
-        GITHUB_TOKEN = credentials('jenkins_github')
-    }
-    
-    stage('Cloner le référentiel GitHub') {
-            steps {
-                git credentialsId: 'jenkins_github', url: 'https://github.com/wissem007/kubernetesmanifest.git'
-            }
-        }
 
     stage('Clone repository') {
       
 
         checkout scm
     }
-        
-    
-        stage('Update GIT') {
+
+    stage('Update GIT') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'jenkins_github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
@@ -35,6 +25,4 @@ node {
     }
   }
 }
-        
-    
-    }
+}
