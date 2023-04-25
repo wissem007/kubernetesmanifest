@@ -3,6 +3,12 @@ node {
    environment {
         GITHUB_TOKEN = credentials('jenkins_github')
     }
+    
+    stage('Cloner le référentiel GitHub') {
+            steps {
+                git credentialsId: 'jenkins_github', url: 'https://github.com/wissem007/kubernetesmanifest.git'
+            }
+        }
 
     stage('Clone repository') {
       
